@@ -16,7 +16,11 @@ npm install
 - Once you are inside the `duckduckgo-search-backend` folder, run following command to start server.
 ``` bash
 npm start
-``` 
+```
+- The server runs on port **3000** by default.
+``` bash
+http://localhost:3000
+```
 # Versions
 - **Node.js:** node.js v20.17.0
 - **npm:** 10.9.0
