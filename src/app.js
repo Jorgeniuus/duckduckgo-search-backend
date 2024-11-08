@@ -22,7 +22,7 @@ app.get('/search', async (req, res) =>{
                 format: 'json'
             }
         })
-        res.json(response.data.RelatedTopics.map(item => ({
+        res.status(200).json(response.data.RelatedTopics.map(item => ({
                 title: item.Text,
                 url: item.FirstURL
             }
@@ -32,4 +32,26 @@ app.get('/search', async (req, res) =>{
     }
 })
 
+app.post('/search', async (req, res) =>{
+    const query = req.body.query
+    if(!query){
+        return res.status(400).json({error: 'The "query" parameter is required'})
+    }
+    try{
+        const api = `https://api.duckduckgo.com/?q=${query}&format=json`
+        const response = await axios.get(api, {
+            params:{
+                q: query,
+                format: 'json'
+            }
+        })
+        res.status(200).json(response.data.RelatedTopics.map(item => ({
+                title: item.Text,
+                url: item.FirstURL
+            }
+        )))
+    }catch (error){
+        res.status(500).json({error: 'something went wrong!'})
+    }
+})
 module.exports = app
