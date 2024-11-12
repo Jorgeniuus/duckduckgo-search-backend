@@ -1,14 +1,18 @@
 # Getting Started
-1. Clone Repository.
+### 1. Clone Repository.
 ``` bash
 git clone https://github.com/Jorgeniuus/duckduckgo-search-backend.git
 ```
-2. Navigate to the `duckduckgo-search-backend` folder:
+### 2. Navigate to the `duckduckgo-search-backend` folder:
+navigate into the specified directory 
 ``` bash 
-cd duckduckgo-search-backend
-cd ../
+cd ./duckduckgo-search-backend
 ```
-3. Run following command to install all required dependencies such as **express**, **cors**, and **axios**.
+opens vs code in current directory.
+``` bash 
+code .
+```
+### 3. Run following command to install all required dependencies such as **express**, **cors**, and **axios**.
 ``` bash
 npm install
 ```

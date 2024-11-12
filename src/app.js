@@ -11,6 +11,6 @@ app.use(cors({
     methods: ['GET','POST'],
     allowedHeaders: ['Content-Type', 'Authorization'],
 }))
-app.use('/search', routes)
+app.use(routes)
 
 module.exports = app

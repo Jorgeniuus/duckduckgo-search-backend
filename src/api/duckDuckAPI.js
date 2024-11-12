@@ -1,7 +1,7 @@
 const axios = require('axios')
 
 const fetchDuckDuckResults = async (query) =>{
-    const api = `https://api.duckduckgo.com/?q=${query}&format=json`
+    const api = `https://api.duckduckgo.com`
 
     try{
         const response = await axios.get(api, {
@@ -17,4 +17,23 @@ const fetchDuckDuckResults = async (query) =>{
         throw new Error(`something went wrong: ${error}`)
     }
 }
-module.exports = fetchDuckDuckResults
+const fetchDuckDuckSuggestions = async (query) =>{
+    const api = `https://api.duckduckgo.com/ac`
+
+    try{
+        const response = await axios.get(api, {
+            params:{
+                q: query,
+                format: 'json'
+            }})
+        return response.data.map(item => ({
+                suggestion: item.phrase
+            }))
+    }catch (error){
+        throw new Error(`something went wrong: ${error}`)
+    }
+}
+module.exports = {
+    fetchDuckDuckResults,
+    fetchDuckDuckSuggestions
+}
